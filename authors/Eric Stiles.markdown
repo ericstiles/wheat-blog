@@ -1,5 +1,5 @@
 Email: stiles.eric@gmail.com
-Github: ???
+Github: ericstiles
 Twitter: ???
 Location: San Antonio, Texas
 
