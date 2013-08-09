@@ -7,7 +7,7 @@ var Stack = require('stack'),
 Http.createServer(Stack(
   Logger.log(),
   require('wheat')(__dirname +"/..")
-)).listen(80);
+)).listen(8080);
 
 
 
