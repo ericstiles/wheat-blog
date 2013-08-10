@@ -40,7 +40,11 @@
     "node",
     "gith"
   ],
-  "author": "Eric Stiles",
+  "author": {
+        "name": "Eric Stiles",
+      "email": "stiles.eric@gmail.com",
+      "url": "http://ericstil.es"
+    },
   "license": "BSD",
   "readmeFilename": "README.md",
   "gitHead": "8ffa229a0fa232f1ddda9530ddb849cd5d9fceee"
