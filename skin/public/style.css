@@ -7,7 +7,7 @@ body {
   line-height: 1.4em;
   font-family: 'Lucida Grande', sans-serif;
   color: #333;
-  background-color: #ccc;
+  background-color: #f1f1f1;
 }
 a {
   color: #0054a6;
@@ -48,9 +48,8 @@ dl a:hover {
 }
 #footer {
   clear: both;
-  border-top: 1px dashed #ccc;
-  padding-top: 15px;
   color: #666;
+  height: 30px;
 }
 #footer p {
   text-shadow: 0px 1px 0px #fff;
@@ -115,19 +114,14 @@ dl a:hover {
   display: none;
 }
 .article .author {
-  color: #999;
-  text-shadow: 0px 1px 0px #fff;
+  color: #0054A6;
+  text-shadow: 1px 2px 0px #ffffff;
   padding: 5px;
-  background-color: #fafafa;
-  -webkit-border-radius: 3px 3px 0px 0px;
-  -moz-border-radius: 3px 3px 0px 0px;
-  border-radius: 3px 3px 0px 0px;
   display: block;
   line-height: 32px;
   overflow: hidden;
   margin-bottom: 20px;
-  font-size: 12px;
-  border-bottom: 1px dashed #ddd;
+  font-size: 18px;
 }
 .article .author img {
   border: 1px solid #fff;
@@ -151,7 +145,7 @@ dl a:hover {
   -webkit-box-shadow: inset 0px 1px 0px rgba(0,0,0,0.10), inset 0px -1px 0px #fff, inset 0px 2px 2px rgba(100,100,100,0.10);
   -moz-box-shadow: inset 0px 1px 0px rgba(0,0,0,0.10), inset 0px -1px 0px #fff, inset 0px 2px 2px rgba(100,100,100,0.10);
   box-shadow: inset 0px 1px 0px rgba(0,0,0,0.10), inset 0px -1px 0px #fff, inset 0px 2px 2px rgba(100,100,100,0.10);
-  line-height: 12px;
+  line-height: 18px;
 }
 .article h1 {
   padding: 20px;
