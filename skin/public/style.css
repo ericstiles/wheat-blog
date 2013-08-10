@@ -7,6 +7,7 @@ body {
   line-height: 1.4em;
   font-family: 'Lucida Grande', sans-serif;
   color: #333;
+  background-color: #ccc;
 }
 a {
   color: #0054a6;
@@ -24,8 +25,11 @@ dl a:hover {
   text-decoration: underline;
 }
 #container {
-  margin: 80px 5%;
-  overflow: hidden;
+  margin-top: 80px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+
 }
 #main {
   float: left;
@@ -71,8 +75,8 @@ dl a:hover {
   float: left;
   display: inline;
   color: #000;
-  margin-left: 240px;
-  font-size: 12px;
+  margin-left: 60%;
+  font-size: 24px;
   font-weight: normal;
   line-height: 10px;
   -webkit-border-radius: 20px;
