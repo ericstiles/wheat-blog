@@ -1,5 +1,5 @@
 Title: A Node powered Git blog using Wheat
-Author: Davy De Waele
+Author: Eric Stiles
 Date: Thu Apr 11 2013 23:30:00 GMT-0500 (EST)
 Node: v0.8.15
 Categories: node,blog,wheat
@@ -108,7 +108,7 @@ The package.json file looks like this:
 	    "node",
 	    "gith"
 	  ],
-	  "author": "Davy De Waele",
+	  "author": "Eric Stiles",
 	  "license": "BSD",
 	  "readmeFilename": "README.md",
 	  "gitHead": "8ffa229a0fa232f1ddda9530ddb849cd5d9fceee"
@@ -198,7 +198,7 @@ If you want to see the raw syntex of the [article you are reading now](https://r
 
 
 	Title: Building a Node powered blog
-	Author: Davy De Waele
+	Author: Eric Stiles
 	Date: Thu Apr 11 2013 23:30:00 GMT-0500 (EST)
 	Node: v0.8.15
 	Categories: node,blog,wheat
@@ -238,7 +238,7 @@ The final file system structure of the git content repository will look like thi
 	./articles
 	./articles/index.markdown
 	./authors
-	./authors/Davy De Waele.markdown
+	./authors/Eric Stiles.markdown
 	./description.markdown
 	./server
 	./server/server.js

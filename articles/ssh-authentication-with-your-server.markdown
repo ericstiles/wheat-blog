@@ -1,5 +1,5 @@
 Title: Setting up SSH access to your server
-Author: Davy De Waele
+Author: Eric Stiles
 Date: Thu Apr 11 2013 23:30:00 GMT-0500 (EST)
 Node: v0.8.15
 Categories: ssh,security,authentication,centos,linux
