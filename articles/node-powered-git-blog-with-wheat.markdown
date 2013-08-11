@@ -1,8 +1,8 @@
 Title: A Node powered Git blog using Wheat
 Author: Eric Stiles
 Date: Thu Apr 11 2013 23:30:00 GMT-0500 (EST)
-Node: v0.8.15
 Categories: node,blog,wheat
+Email: stiles.eric@gmail.com
 
 In this article I'll show you how to setup a Node / Git powered blog using the 
 <a href="https://github.com/creationix/wheat/" target="_blank">Wheat engine</a> created by [Tim Caswell](https://twitter.com/creationix).

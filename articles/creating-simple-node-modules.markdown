@@ -1,10 +1,9 @@
 Title: Creating simple node modules
 Author: Eric Stiles
 Date: Thu Apr 11 2013 23:30:00 GMT-0500 (EST)
-Node: v0.8.15
 
 
-There are different ways to create objects in Javscript.
+There are different ways to create objects in Javacript.
 
 * display contents of external JavaScript file (path is relative to .markdown file)
 <creating-simple-node-modules/string-exports.js>
