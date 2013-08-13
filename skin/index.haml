@@ -1,9 +1,7 @@
-#main.index
+#listing.index
   :each article in articles.slice(0,15)
     .article
       .author
-        %img{src:gravitar(article.author.email, 30)}
-        By #{article.author.name}
         .date{title: article.date}&= formatDate(article.date, "%Y.%m.%d")
       %h3
         %a{href: "/" + article.name}&= article.title
@@ -20,7 +18,6 @@
       :each article in articles.slice(0,20)
         %li
           %a{href: "/" + article.name}&=article.title
-          &=" by " + article.author.name
           
   .bubble
     %h4
