@@ -10,7 +10,7 @@ blogging platform that gets the job done by reading [haml][] markdown files stor
 
 ##Choices
 
-There are a number of choices some that to look at:
+There are a number of node blogging choices to look at:
 
  - [Poet](http://jsantell.github.io/poet/)
  - [Scotch](https://github.com/techwraith/scotch)
@@ -40,7 +40,17 @@ For naming articles I like the Octopress convention YYYY-MM-DD-post-title.markdo
 For new blogs based on the sample github repository above be aware that several configurations are hardcoded into the implementation
  - Wheat uses a hash for an email to pull a [gravatar][] image.  By default the authors id from his email is used.
  - Disqus is set up with the authors id
- - Twitter is setup with the
+ - Twitter is setup with the "data-via:" tag set
+ - A google verification html file is used, but by changing the extension to .hidden that goes away.
+ - Google analytics are used so either remove it or add your own id
+
+ There may me more sections where a configurations file would be helpful and that may be something I work one.
+
+Finally, I'd like to add a link to move from post to post at the bottom of each article.
+
+## Next Time
+
+I'll take you through the actual set up of the PaaS implementation I chose.
 
 ##References
 
@@ -53,5 +63,8 @@ For new blogs based on the sample github repository above be aware that several 
 - [A simple CLI tool for ensuring that a given script runs continuously (i.e. forever) ](https://github.com/nodejitsu/forever)
 - [Markdown reference](http://daringfireball.net/projects/markdown/basics)
 
+[git]: http://git-scm.com
+[haml]: http://haml.info
 [node.js]: http://nodejs.org/
+[Octopress]: http://octopress.org
 [Wheat]: http://github.com/creationix/wheat
