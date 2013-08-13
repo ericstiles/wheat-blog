@@ -1,6 +1,7 @@
 Email: stiles.eric@gmail.com
 Github: ericstiles
-Twitter: ???
+Twitter: ets04uga
+Skype: e.stiles
 Location: San Antonio, Texas
 
-Bio....
+From a timex sinclair to a apple IIe to a custom desktop, to multiple laptops in between back to a custom desktop that is used in conjunction with a macbook pro.
