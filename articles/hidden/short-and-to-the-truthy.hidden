@@ -1,0 +1,11 @@
+
+
+
+Since most values in javascript are truthy, e.g. objects, arrays, most numbers and strings, it's easier to identify all of the falsy values. These are:
+false // obviously
+0     // The only falsy number
+""    // the empty string
+null
+undefined
+NaN
+           
