@@ -1,0 +1,108 @@
+The objective of this post is to get you from absolutely nothing, to a fully functional nodejs environment.
+Software used: Ubuntu 11.10, Nodejs v0.6.12, Nginx, MongoDB, Redis, and NPM modules.
+
+1. Download and install the latest version of Ubuntu: http://www.ubuntu.com/download (don't select any extra items to install when prompted)
+2. Once you are logged in and are at your Ubuntu command prompt, install the necessary software you will need:
+  a. sudo apt-get install openssh-server
+  b. sudo apt-get install libssl-dev
+  c. sudo apt-get install git
+  d. sudo apt-get install g++
+  e. sudo apt-get install make
+  f. sudo apt-get install redis-server
+  g. sudo apt-get install python-software-properties
+3. Give your host/server a static IP address if it doesn't already have one:
+  a. sudo nano /etc/network/interfaces
+  b. comment out the following line:
+    i. iface eth0 inet dhcp
+  c. add the following lines directly after the line you just commented out:
+     iface eth0 inet static
+     address 192.168.1.200
+     gateway 192.168.1.1
+     netmask 255.255.255.0
+     network 192.168.1.0
+     broadcast 192.168.1.255
+  d. NOTE: These addresses will be different depending on where your host/server resides.  If your host/server is on your home network, these addresses will work in most cases.  You can change the address line above (address 192.168.1.200) to a different number if you would like, as long as it starts with 192.168.1 and doesn't collide with another IP address on your network.
+  e. restart networking so that the changes will take effect:
+    i. sudo /etc/init.d/networking restart
+4. Type the following commands to install Nodejs
+  a. cd ~
+  b. git clone https://github.com/joyent/node.git
+  c. cd node
+  d. git checkout v0.6.12
+  e. ./configure --prefix=/opt/node
+  f. make
+  g. sudo make install
+5. Add the following line to the bottom of both the .profile and .bashrc files located in your home dir.
+  a. export PATH=$PATH:/opt/node/bin
+6. If you plan on using MongoDB as your database, perform the following steps (this will also start MongoDB when your server boots):
+  a. sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 7F0CEB10
+  b. sudo nano /etc/apt/sources.list
+  c. The nano editor should now be open, add the following line to the very bottom and save it:
+    i. deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen
+  d. sudo apt-get update
+  e. sudo apt-get upgrade
+  f. sudo apt-get install mongodb-10gen
+7. It is a good idea to use Nginx to serve your static files, and let Nodejs take care of the pages.  To install and setup Nginx, perform the following steps:
+  a. sudo add-apt-repository ppa:nginx/stable
+  b. apt-get update
+  c. apt-get install nginx
+  d. Now, you want to create a file for your domain so Nginx knows that it is available.  This can be anything, but I will refer to it here as "my_domain", assuming I bought the domain: "my_domain.com"
+    i. sudo nano /etc/nginx/sites-available/my_domain
+  e. Inside the file that you just created, you need to enter a configuration.  Paste the following code into the file that you just created:
+
+# the IP(s) on which your node server is running i choose the port 8090
+upstream app_my_domain {
+    server 127.0.0.1:8090;
+}
+
+# the nginx server instance
+server {
+    listen 0.0.0.0:80;
+    server_name my_domain.co my_domain;
+    access_log /var/log/nginx/my_domain.log;
+
+	# Let's put all static files like images, js and css in sub-folder: public
+    root /var/www/my_domain/public;
+
+    #  static content
+    location ~* ^.+.(jpg|jpeg|gif|css|png|js|ico|xml)$ {
+      # access_log        off;
+      expires           15d;
+    }
+
+    # pass the request to the node.js server with the correct headers and much more can be added, see nginx config options
+    location / {
+      proxy_set_header X-Real-IP $remote_addr;
+      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      proxy_set_header Host $http_host;
+      proxy_set_header X-NginX-Proxy true;
+
+      proxy_pass http://app_my_domain/;
+      proxy_redirect off;
+    }
+ }
+
+  f. Now, you need to adjust this configuration according to your app.  Replace all instances of "my_domain" in the configuration, with whatever you named your file.  In the two places where you see "app_my_domain", keep the "app_" part.
+  g. Link sites enabled to sites available:
+    i. cd /etc/nginx/sites-enabled/
+    ii. ln -s /etc/nginx/sites-available/my_domain my_domain
+  h. Reload the config:
+    i. sudo /etc/init.d/nginx restart
+
+8. Now it is time to structure your Nodejs app.  Create a folder in /var/www/ named the same as the file your created for your Nginx configuration.  NOTE: if the "www" directory doesn't exist in /var/, you must create it
+  a. sudo mkdir /var/www
+  b. sudo mkdir /var/www/my_domain
+  c. A very basic app consists of these parts: a file named app.js (you can name this anything), a directory named "node_modules", and a directory named "public".  Create the directories:
+    i. sudo mkdir /var/www/my_domain/node_modules
+    ii. sudo mkdir /var/www/my_domain/public
+  d.  To install node modules, move into the node_modules directory and use NPM to install.  Express is a common node module to install:
+    i. cd /var/www/my_domain/node_modules
+    ii. npm install express
+
+NOTE:  When building your app, remember to run it on port 8090, because that is where we told Nginx to route it in the configuration.  If you want to run it on a different port, you must change the Nginx configuration as well.  Node is not able to run on port 80 without sudo privileges, and it is not recommended to do so.
+
+NOTE: If your server crashes when MongoDB is running, it will not come back online when the server restarts.  If this is the case run mongod --repair from the command line.
+
+Note:  If you want to run multiple node.js instances on one server, simply repeat all the steps above, but make sure that the ports they are running on are different from one another.
+
+Note:  If you haven't purchased a domain for your application you can always add it to your hosts file.  On linux it is located: /etc/hosts.  On windows it is located: C:\Windows\System32\drivers\etc\hosts
