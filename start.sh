@@ -6,7 +6,7 @@ start \
 -al github-servicehook.log \
 -ao github-servicehook-out.log \
 -ae github-servicehook-err.log \
-server/server.js
+server/hook.js
 
 # Invoke the Forever module to start our blog.
 ./node_modules/forever/bin/forever \
