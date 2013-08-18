@@ -4,10 +4,17 @@ var Stack = require('stack'),
     Http = require('http'),
     Logger = require('./logger');
 
+console.log(__dirname);
+
 Http.createServer(Stack(
   Logger.log(),
   require('wheat')(__dirname +"/..")
-)).listen(8000);
+)).listen(8080);
+
+Http.createServer(Stack(
+    Logger.log(),
+    require('wheat')(__dirname +"/..")
+)).listen(8081);
 
 
 
