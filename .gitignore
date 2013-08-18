@@ -1,3 +1,52 @@
+# Compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Build Output #
+################
+results
+target
+build
+
+# Packages #
+############
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+######################
+*.log
+*.sql
+*.sqlite
+logs
+
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+pids
+
+# file extensions #
+###################
 lib-cov
 *.seed
 *.log
@@ -7,15 +56,18 @@ lib-cov
 *.pid
 *.gz
 
-pids
-logs
-results
-
+# locally installed node modules #
+##################################
 npm-debug.log
 node_modules
 
+# intellij #
+############
 .idea
 *.iml
 
-
+# project specific #
+####################
+#ignore everything in the bin folder except the start script
 bin
+!bin\start.sh
