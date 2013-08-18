@@ -17,12 +17,12 @@ quickly setting up an instance.
 I'm sure the provisioning and setup for some, most or all of these is simpler than
 
 
- - Cloudfoundry
- - Openshift
- - Heroku
- - Nodejitsu
- - Openshift
- - Vagrant
+ - [Cloudfoundry](http://cloudfoundry.com)
+ - [Heroku](http://heroku.com)
+ - [Nodejitsu](http://nodejitsu.com)
+    It's important to know that nodejitsu only allows port 80.  Great security, but a little lacking in flexibility
+ - [Openshift](http://openshift.com)
+ - [Vagrant](http://vagrant.com)
 
 To be fair it's a single instance and I didn't attach an EBS to it so that if it crashes I'll will have to manually
 intervene.
