@@ -2,9 +2,10 @@
   .article
     :if article.version
       %a.sha-version{ href: "/#{article.version}/#{article.name}" } Static Version
-    %h1
-      .title
+    .left
+      %h1.title
         %a{href: "/" + article.name}&= article.title
+    .right
       .twitter
         %a.twitter-share-button{href:"http://twitter.com/share",data-count:"horizontal",data-via:"creationix"}
           Tweet

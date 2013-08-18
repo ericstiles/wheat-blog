@@ -3,7 +3,7 @@
     .article
       .author
         .date{title: article.date}&= formatDate(article.date, "%Y.%m.%d")
-      %h3
+      %h2
         %a{href: "/" + article.name}&= article.title
       = intro(article.markdown)
       %a.more{href: "/" + article.name} Read more...
