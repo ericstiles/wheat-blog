@@ -1,20 +1,38 @@
 Title: Getting started... :  Wheat setup, part 2
 Author: Eric Stiles
-Date: Apr 1 2013 17:30:00 GMT-0500 (CST)
-Categories: node,blog,wheat
+Date: Apr 3 2013 17:30:00 GMT-0500 (CST)
+Categories: node,blog,wheat,ec2,aws
 Email: stiles.eric@gmail.com
 
+In this article I'll run through the setup of this blog on an ec2 instance with a cheap dns entry.
 
-##References
+## PaaS
 
-- [thechangelog.com](http://thechangelog.com/wheat-blog-engine-for-node-js/)
-- [Howtonode.org code](https://github.com/creationix/howtonode.org)
-- [gith github webhooks for node](http://weblog.bocoup.com/introducing-gith-github-webhooks-for-node/)
-- [GitHub Post Receive Hooks](https://help.github.com/articles/post-receive-hooks)
-- [Wheat by creationix](https://github.com/creationix/wheat)
-- [Node.JS library to read git repositories. ](https://github.com/creationix/node-git)
-- [A simple CLI tool for ensuring that a given script runs continuously (i.e. forever) ](https://github.com/nodejitsu/forever)
-- [Markdown reference](http://daringfireball.net/projects/markdown/basics)
+I've seen a number of articles on the use of various PaaS and spent some time, about an hour
+each, reviewing them.  Ultimately, for my purposes I just directly provisioned an ec2 micro instance and within about
+an hour had it updated and everything installed.  This may not be a fair assessment for other people as I had previously
+spent a significant amount of time previously learning how to use the aws cli and had some simple shell scripts for
+quickly setting up an instance.
 
-[node.js]: http://nodejs.org/
-[Wheat]: http://github.com/creationix/wheat
+I'm sure the provisioning and setup for some, most or all of these is simpler than
+
+
+ - Cloudfoundry
+ - Openshift
+ - Heroku
+ - Nodejitsu
+ - Openshift
+ - Vagrant
+
+To be fair it's a single instance and I didn't attach an EBS to it so that if it crashes I'll will have to manually
+intervene.
+
+## Provisioning
+
+## Security Groups
+
+## Installation
+
+## HTTP & HTTPS
+
+## Starting The Server
