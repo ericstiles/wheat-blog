@@ -9,12 +9,12 @@ console.log(__dirname);
 Http.createServer(Stack(
   Logger.log(),
   require('wheat')(__dirname +"/..")
-)).listen(8080);
+)).listen(8000);
 
 Http.createServer(Stack(
     Logger.log(),
     require('wheat')(__dirname +"/..")
-)).listen(8081);
+)).listen(8001);
 
 
 
