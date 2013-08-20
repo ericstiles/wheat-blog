@@ -76,24 +76,27 @@ root users should not start processes (who wants to accidently delete their OS b
 
 A work-around is to add a port forwarding rule via `iptables`.  So generally the most I do is to turn off the iptables (after spending an hour trying to figure out why I can't see the server).
 
-### Oh dear familiar feeling: you are a total n00b and know not one thing about iptables.
+Follow the following steps ([Reference]())
+ 1. List the rules currently running on the NAT (Network Address Translation) table:
 
-First, I listed the rules currently running on the NAT (Network Address Translation) table:
+    sudo iptables -t nat -L
 
-[ec2-user@ip-XX-XXX-XX-X ~]$ sudo iptables -t nat -L
 
-Chain INPUT (policy ACCEPT)
-target prot opt source destination
+    Output:
 
-Chain FORWARD (policy ACCEPT)
-target prot opt source destination
+    Chain INPUT (policy ACCEPT)
+    target prot opt source destination
 
-Chain OUTPUT (policy ACCEPT)
-target prot opt source destination
+    Chain FORWARD (policy ACCEPT)
+    target prot opt source destination
 
-I saw nothing, so I felt free to add a rule forwarding packets sent to external port 80 to internal port 8000:
+    Chain OUTPUT (policy ACCEPT)
+    target prot opt source destination
 
-`[ec2-user@ip-XX-XXX-XX-X ~]$ sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8000`
+ 2. No rules present so now let's add a rule forwarding from external port 80 to internal port 8000.
+
+    sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8000`
+
 
 When I listed again, I saw a new PREROUTING chain:
 
