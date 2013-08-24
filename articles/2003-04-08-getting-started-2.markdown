@@ -113,20 +113,57 @@ Check the node server to confirm it is listening on port 8000, but is writing re
 
 ## Start Server
 
-The one gap in the overall solution for wheat.  The approach for a production release is to use a bare repository.  The
-server code must be pushed to the server another way.
+The one gap in the overall solution for wheat is the approach for a production release is to use a bare repository.  The
+server code must be pushed to the server another way since the bare repository does not contain any files.
+
+Additionally the **server.js** untouched as configured code must exist within the bare git repository as a file.  It makes it easier to go ahead and
+keep the **logger.js** and **hook.js** files in the same location.
 
 Following from the reference article [http://blog.davydewaele.be/node-powered-git-blog-with-wheat](http://blog.davydewaele.be/node-powered-git-blog-with-wheat)
 use the **forever** module to start a child process for gith and wheat.
 
-    #!/bin/bash
+The start.sh script below follows the code structure below:
 
-    # Invoke the Forever module (to START our Node.js server).
-    ./node_modules/forever/bin/forever \
+    #!/bin/sh
+
+    SCRIPTPATH="${BASH_SOURCE[0]}"
+    SCRIPTDIR="$(cd "$(dirname "${SCRIPTPATH}")" ; pwd)"
+    GITREPO="wheat-blog.git"
+    BLOGPATH=$SCRIPTDIR/../$GITREPO
+    #echo "Script path: ${SCRIPTDIR}/$(basename "${SCRIPTPATH}")"
+
+    # Invoke the Forever module to start the Github server hook.
+    $BLOGPATH/server/node_modules/forever/bin/forever \
     start \
-    -al forever.log \
-    -ao out.log \
-    -ae err.log \
-    server/server.js
+    -al github-servicehook.log \
+    -ao github-servicehook-out.log \
+    -ae github-servicehook-err.log \
+    $BLOGPATH/server/hook.js
+
+    # Invoke the Forever module to start our blog.
+    $BLOGPATH/server/node_modules/forever/bin/forever \
+    start \
+    -al wheat-blog-forever.log \
+    -ao wheat-blog-out.log \
+    -ae wheat-blog-err.log \
+    $BLOGPATH/server/server.js
+
+The stop.sh script is more generic in that it looks for all processes, excluding the grep search that contain ".js".
+From there it grabs the PID and kills them, otherwise nothing is done and the user is made aware nothing exits.
+
+    #!/bin/sh
+
+    array=($(ps -ef | grep .[j]s | sed 's/\s\s*/ /g' | cut -d ' ' -f 2 ))
+    #echo ${array[@]}
+    printf "Stopping javascript processes\n"
+    if [ "${#array[@]}" -gt "0" ]; then
+      for i in "${array[@]}"
+      do
+        printf "...killing process("$i")\n"
+        kill -9 $i
+      done
+    else
+      printf "...no processes found to kill\n"
+    fi
 
 
