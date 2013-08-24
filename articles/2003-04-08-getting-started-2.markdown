@@ -96,7 +96,7 @@ Follow the following steps ([Great Gist](https://gist.github.com/kentbrew/776580
 
 No rules present so now let's add a rule forwarding from external port 80 to internal port 8000.
 
-    sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8000`
+    sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8000
 
 Listed again there is a a new PREROUTING chain:
 
@@ -130,7 +130,6 @@ The start.sh script below follows the code structure below:
     SCRIPTDIR="$(cd "$(dirname "${SCRIPTPATH}")" ; pwd)"
     GITREPO="wheat-blog.git"
     BLOGPATH=$SCRIPTDIR/../$GITREPO
-    #echo "Script path: ${SCRIPTDIR}/$(basename "${SCRIPTPATH}")"
 
     # Invoke the Forever module to start the Github server hook.
     $BLOGPATH/server/node_modules/forever/bin/forever \
@@ -154,7 +153,6 @@ From there it grabs the PID and kills them, otherwise nothing is done and the us
     #!/bin/sh
 
     array=($(ps -ef | grep .[j]s | sed 's/\s\s*/ /g' | cut -d ' ' -f 2 ))
-    #echo ${array[@]}
     printf "Stopping javascript processes\n"
     if [ "${#array[@]}" -gt "0" ]; then
       for i in "${array[@]}"
