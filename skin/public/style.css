@@ -190,7 +190,7 @@ dl a:hover {
 .article .right{
     position: absolute;
     top: 25px;
-    right: 21px;
+    right: -21px;
 }
 
 .article .right .twitter {
