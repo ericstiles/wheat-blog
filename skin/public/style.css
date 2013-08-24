@@ -331,6 +331,9 @@ dl a:hover {
   right: 20px;
   height: 20px;
 }
+.article blockquote{
+    margin: 10px 30px;
+}
 #sidebar .aside,
 #sidebar .bubble {
   margin-bottom: 20px;
