@@ -69,71 +69,64 @@ In order to run node as a child process run the following
 
 ## HTTP & HTTPS
 
-As mentioned above I actually setup SSL that forwards to port 80, but as a rule non-root users generated processes cannot listen on ports less than 1024.  Additionally, as a best practice
-root users should not start processes (who wants to accidently delete their OS because the application did something unexpected). So no
+As mentioned above I actually setup SSL that forwards to port 80, but as a rule non-root users generated processes
+cannot listen on ports less than 1024.  Additionally, as a best practice root users should not start processes (who
+wants to accidently delete their OS because the application did something unexpected).
 
     sudo /usr/bin/node app.js
 
 A work-around is to add a port forwarding rule via `iptables`.  So generally the most I do is to turn off the iptables (after spending an hour trying to figure out why I can't see the server).
 
-Follow the following steps ([Reference]())
- 1. List the rules currently running on the NAT (Network Address Translation) table:
+Follow the following steps ([Great Gist](https://gist.github.com/kentbrew/776580))
 
     sudo iptables -t nat -L
 
+**Output:**
+>Chain INPUT (policy ACCEPT)
+>
+>target prot opt source destination
+>
+>Chain FORWARD (policy ACCEPT)
+>
+>target prot opt source destination
+>
+>Chain OUTPUT (policy ACCEPT)
+>
+>target prot opt source destination
 
-    Output:
-
-    Chain INPUT (policy ACCEPT)
-    target prot opt source destination
-
-    Chain FORWARD (policy ACCEPT)
-    target prot opt source destination
-
-    Chain OUTPUT (policy ACCEPT)
-    target prot opt source destination
-
- 2. No rules present so now let's add a rule forwarding from external port 80 to internal port 8000.
+No rules present so now let's add a rule forwarding from external port 80 to internal port 8000.
 
     sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-ports 8000`
 
+Listed again there is a a new PREROUTING chain:
 
-When I listed again, I saw a new PREROUTING chain:
+    sudo iptables -t nat -L
 
-[ec2-user@ip-XX-XXX-XX-X ~]$ sudo iptables -t nat -L
+**Output:**
+>Chain PREROUTING (policy ACCEPT)
+>
+>target prot opt source destination
+>
+>REDIRECT tcp -- anywhere anywhere tcp dpt:http redir ports 8000
 
-Chain PREROUTING (policy ACCEPT)
-target prot opt source destination
-REDIRECT tcp -- anywhere anywhere tcp dpt:http redir ports 8000
-I checked my Node script, which was running on port 8000, and (yes!) it was responding on port 80.
+Check the node server to confirm it is listening on port 8000, but is writing responses to port 80.
 
-## Fumbling
+## Start Server
 
-During my early attempts I screwed up a bunch of times. I removed busted rules by specifying the right table, the right chain, and the right line number, like so:
+The one gap in the overall solution for wheat.  The approach for a production release is to use a bare repository.  The
+server code must be pushed to the server another way.
 
-[ec2-user@ip-XX-XXX-XX-X ~]$ sudo iptables -t nat -D PREROUTING 1
+Following from the reference article [http://blog.davydewaele.be/node-powered-git-blog-with-wheat](http://blog.davydewaele.be/node-powered-git-blog-with-wheat)
+use the **forever** module to start a child process for gith and wheat.
 
-This removed the first line from the `PREROUTING` chain in my nat table.
+    #!/bin/bash
 
-## Careful, now....
-
-I did not do this myself but throughout this process I had a very strong feeling I should be very careful not to screw up port 22, which was my only way in.
-
-## Acknowledgements:
-
-- [@rckenned](http://twitter.com/rckenned),
-- [@jrconlin](http://twitter.com/jrconlin),
-- [@spullara](http://twitter.com/spullara),
-- [@frozentux](http://twitter.com/frozentux) for <http://iptables.rlworkman.net/chunkyhtml>, which is a pretty definitive iptables tutorial.
-
-dfgonzalez commented 2 years ago
-
-Worked like a charm in aws, tha
-
-## Starting The Server
+    # Invoke the Forever module (to START our Node.js server).
+    ./node_modules/forever/bin/forever \
+    start \
+    -al forever.log \
+    -ao out.log \
+    -ae err.log \
+    server/server.js
 
 
-
-
-
-Semantic Versioning
