@@ -241,75 +241,37 @@ add to **DGraphDefaults.xml**
 
 ## CAS - Data Source
 
-See message “CAS Console must be accessed through Workbench”
-https://forums.oracle.com/thread/2429464
+See message “CAS Console must be accessed through Workbench” at [https://forums.oracle.com/thread/2429464](https://forums.oracle.com/thread/2429464).  
 This can occur if CAS is reinstalled. Check your ws-extensions.xml and casconsole.properties files, and ensure that they agree on the same shared-secret.
 
 ## Why Match option in Dgraph
 
-Why Match is an option used in development that provides additional information to assist with debugging why a particular search returns the results it does.
-The whymatch warning indicates that the whymatch dgraph option has been deprecated as of MDEX 6.2.0. At this point, I wouldn't be too concerned about the warning. When you go to Production, though, make sure that you're not using that dgraph option, because it can have a negative performance impact.
-For additional information, please refer to the following Endeca documentation.
-docs.oracle.com/cd/E40176_01/MDEX.641/pdf/MDEXMigrationGuide.pdf#Page=17
-Oracle Endeca Commerce
-MDEX Engine Migration Guide
-Required changes in version 6.2.0
-"Why Did It Match changes"
-docs.oracle.com/cd/E40176_01/MDEX.641/pdf/AdvDevGuide.pdf#Page=133
-Oracle Endeca Commerce
-MDEX Engine Advanced Development Guide
-"Why Match performance impact"
+**Why Match** is an option used in development that provides additional information 
+to assist with debugging why a particular search returns the results it does. The 
+whymatch warning indicates that the whymatch dgraph option has been deprecated as 
+of MDEX 6.2.0. At this point, I wouldn't be too concerned about the warning. When 
+you go to Production, though, make sure that you're not using that dgraph option, 
+because it can have a negative performance impact.
 
-## Platform Services Handling Multiple Applications
+For additional information, please refer to the following [Endeca documentation](http://docs.oracle.com/cd/E40176_01/MDEX.641/pdf/MDEXMigrationGuide.pdf#Page=17).
 
-If the platform services is handling application and an issue occurs with one single application, can we start and stop that application
-
-SEVERE: The web application [/discover] appears to have started a thread named [
-Thread-7] but has failed to stop it. This is very likely to create a memory leak
-.
-Jul 17, 2013 11:32:49 AM org.apache.catalina.loader.WebappClassLoader clearThrea
-dLocalMap
-SEVERE: The web application [/discover] created a ThreadLocal with key of type [
-java.lang.ThreadLocal] (value [java.lang.ThreadLocal@43320bcf]) and a value of t
-ype [com.endeca.infront.assembler.event.request.RequestEvent] (value [{endeca:en
-eTime=56, endeca:assemblyStartTimestamp=1374076077774, @type=AssemblerRequestEve
-nt, endeca:contentPath=/browse, endeca:relRankStrategy=nterms,maxfield,exact,sta
-tic(product.analytics.conversion_rate,descending)
-        , endeca:sessionId=B278A5D0087C29B0A34EEC5458F7FBB0, endeca:requestType=
-T, endeca:recordNames=[Zx1, EOS 5D Mark II, body, HR10 & Tenba Xpress: Medium Po
-uch, Black/Teal, Digital IXUS 85 IS, Z980, FUN Flash Single Use Camera, 1+1 Pack
-, Prima Super 130U Date, EOS 5D Mark II + EF 24-105mm f4L IS USM, QuickCamAr Cha
-t for Skype, Digital IXUS 80 IS, 15x50 IS, Cyber-shot T70, Black], endeca:numRec
-ords=5616, endeca:assemblyFinishTimestamp=1374076078225, endeca:sortKey=[product
-.analytics.total_sales|Ascending], endeca:spotlights=[Top Rated Products], endec
-a:siteRootPath=/pages}]) but failed to remove it when the web application was st
-opped. This is very likely to create a memory leak.
-Jul 17, 2013 11:32:49 AM org.apache.catalina.core.ApplicationContext log
-INFO: Closing Spring root WebApplicationContext
-Jul 17, 2013 11:32:49 AM org.apache.catalina.loader.WebappClassLoader clearRefer
-encesThreads
-SEVERE: The web application [/assembler-authoring] appears to have started a thr
-ead named [Thread-61] but has failed to stop it. This is very likely to create a
- memory leak.
-Jul 17, 2013 11:32:50 AM org.apache.coyote.http11.Http11Protocol destroy
-INFO: Stopping Coyote HTTP/1.1 on http-8006
-
-To restart an application run
-./eaccmd.sh stop --app Discover
-./eaccmd.sh start --app Discover
-
-## Endeca Reference App URLs
-
- - http://drcapl0028347:8006/discover/
- - http://drcapl0028347:8006/discover-authoring/
- - http://drcapl0028347:8888/endeca_jspref/controller.jsp
-
-## Commands for initializing and starting new Endeca application
+## Initializing New Endeca Application
 
  - ./initialize_services.sh
  - ./load_baseline_test_data.sh
  - ./baseline_update.sh
  - ./promote_content.sh
+
+## Starting and Stopping Endeca Application
+
+    ./eaccmd.sh stop --app Discover
+    ./eaccmd.sh start --app Discover
+
+## Endeca Reference App URLs
+
+ - http://<server>:8006/discover/
+ - http://<server>:8006/discover-authoring/
+ - http://<server>:8888/endeca_jspref/controller.jsp
 
 ## Kill All Endeca Processes
 
@@ -317,21 +279,30 @@ To restart an application run
 
 ## Remove Endeca Application
 
-/appl/ecomm/endeca/apps/Discover/control/runcommand.sh --remove-app --app-config /appl/ecomm/endeca/apps/Discover/config/script/AppConfig.xml
-When you run the "--remove-app" option for runcommand, you should be able to leave off the "--app-config" parameter, as the script will already have a reference point for where to find the AppConfig.
-If you try running without the --app-config parameter, does this work successfully? I was able to reproduce your error by running your command, and when I remove the explicit appconfig setting the app gets removed as expected.
-$ENDECA_ROOT/bin/eaccmd utility
-If the app folder structure had been deleted, you could still delete the Endeca job definitions from the Endeca Application Controller (EAC) via the $ENDECA_ROOT/bin/eaccmd utility and the "remove-app" command. eaccmd allows you work directly against the job database in EAC, similar to how runcommand allows you to, but outside the context of the Deployment Template (DT). If you are using the DT, it's generally advised to use runcommand for operations like these as it will be aware of the full context of your deployed DT app, whereas eaccmd will only strictly know about what is in the EAC database. They are both different tools that allow you access to the EAC jobs via web service calls. Workbench is another tool that looks at the EAC database in order to display the jobs in the Admin Console.
-http://docs.oracle.com/cd/E28911_01/PlatformServices.612/pdf/EACGuide.pdf#page=51
-http://docs.oracle.com/cd/E36434_01/CRS.10-1-2/ATGCRSInstall/html/s0306removingtheendecaapplication01.html
-Steps similar to above
-Go to Tools and Frameworks/bin and execute eaccmd list-apps.
-Navigate to the <App_Dir>\control directory.
-runcommand --remove-app
-List the current applications again by running eaccmd list-apps.
-The selected application should no longer display.
-Then, delete the application directory.
+    /appl/ecomm/endeca/apps/Discover/control/runcommand.sh --remove-app
 
+### Adding the --app-config parameter
+
+**--app-config /appl/ecomm/endeca/apps/Discover/config/script/AppConfig.xml**  
+
+When running the "--remove-app" option for runcommand, you should be able to leave off the "--app-config" parameter, as the script will already have a reference point for where to find the AppConfig.  If it's not left off the app may not be removed successfully.  Oracle was able to reproduce this 
+error.
+
+If the app folder structure had been deleted, you could still delete the Endeca job definitions from the Endeca Application Controller (EAC) via the $ENDECA_ROOT/bin/eaccmd utility and the "remove-app" command. eaccmd allows you work directly against the job database in EAC, similar to how runcommand allows you to, but outside the context of the Deployment Template (DT). If you are using the DT, it's generally advised to use runcommand for operations like these as it will be aware of the full context of your deployed DT app, whereas eaccmd will only strictly know about what is in the EAC database. They are both different tools that allow you access to the EAC jobs via web service calls. Workbench is another tool that looks at the EAC database in order to display the jobs in the Admin Console.
+
+See
+
+ - [http://docs.oracle.com/cd/E28911_01/PlatformServices.612/pdf/EACGuide.pdf#page=51](http://docs.oracle.com/cd/E28911_01/PlatformServices.612/pdf/EACGuide.pdf#page=51)
+ - [http://docs.oracle.com/cd/E36434_01/CRS.10-1-2/ATGCRSInstall/html/s0306removingtheendecaapplication01.html](http://docs.oracle.com/cd/E36434_01/CRS.10-1-2/ATGCRSInstall/html/s0306removingtheendecaapplication01.html)
+
+Steps similar to above
+
+1. Go to Tools and Frameworks/bin and execute eaccmd list-apps.
+2. Navigate to the <App_Dir>\control directory.
+3. runcommand --remove-app
+4. List the current applications again by running eaccmd list-apps.
+5. The selected application should no longer display.
+6. Then, delete the application directory.
 
 ## Issues with CRS
 
