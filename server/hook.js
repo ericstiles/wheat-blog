@@ -1,4 +1,4 @@
-// create a gith server on port 700
+// create a gith server on port 7500
 var gith = require('gith').create( 7500 );
 
 gith({
@@ -10,13 +10,23 @@ gith({
 	// Execute a git fetch on the bare repo.
 	var gitRepoPath = "/home/node/wheat-blog.git";
 	var gitCommand = "git --git-dir " + gitRepoPath + " fetch origin master:master";
+    var gitLogUpdate = "git log -1 --pretty=oneline";
+
 
 	var sys = require('sys')
 	var exec = require('child_process').exec;
 	var fetchOutput = exec(gitCommand, function puts(error, stdout, stderr) {
 	        if (error) {
-	            console.log('Error occured \n[' + error+']');
-	        }
+	            console.log('Error occurred \n[' + error+']');
+	        } else{
+                var updateOutput = exec(gitLogUpdate, function puts(error, stdout, stderr) {
+                    if (error) {
+                        console.log('Error occurred getting git update \n[' + error+']');
+                    } else {
+                        console.log("Update:" + stdout);
+                    }
+                });
+            }
 	}
 	);
 
