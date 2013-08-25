@@ -8,7 +8,7 @@ gith({
     console.log("Payload = " + JSON.stringify(payload));
     var gitRepoPath = "/home/node/wheat-blog.git";
     var gitCommand = "git --git-dir " + gitRepoPath + " fetch origin master:master";
-    var gitLogUpdate = "git log -1 --pretty=oneline --git-dir " + gitRepoPath;
+    var gitLogUpdate = "git --git-dir " + gitRepoPath + " log -1 --pretty=oneline";
     var sys = require('sys')
     var exec = require('child_process').exec;
     var fetchOutput = exec(gitCommand, function puts(error, stdout, stderr) {
