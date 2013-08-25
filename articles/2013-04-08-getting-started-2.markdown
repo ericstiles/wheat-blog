@@ -14,7 +14,8 @@ an hour had it updated and everything installed.  This may not be a fair assessm
 spent a significant amount of time previously learning how to use the aws cli and had some simple shell scripts for
 quickly setting up an instance.
 
-I'm sure the provisioning and setup for some, most or all of these is simpler than
+I'm sure the provisioning and setup for some, most or all of the services below is easier than setting an ec2, but once I have a core
+image I can use it for future provisioning.  The cost 
 
  - [Cloudfoundry](http://cloudfoundry.com)
  - [Heroku](http://heroku.com)
@@ -23,21 +24,21 @@ I'm sure the provisioning and setup for some, most or all of these is simpler th
  - [Openshift](http://openshift.com)
  - [Vagrant](http://vagrant.com)
 
-To be fair it's a single instance and I didn't attach an EBS to it so that if it crashes I'll will have to manually
-intervene.
+To be fair the ec2 instance is a single instance and I didn't attach an EBS to it so that if it crashes I'll will have to manually
+intervene, but I can grow this out later.
 
 ## Provisioning
 
-I don't want to make this a tutorial on setting up an ec2 as there are excellent tutorials that can a user through the
-steps far better than I want to do here.  At a high level there are two main ways to create an instance
+This isn't a tutorial on setting up an ec2 as there are excellent tutorials that can walk a user through the
+steps far better than I can do here.  At a high level there are two main ways to create an instance
 
  - AWS UI Interface
  - Command line after installing the ec2 CLI tool set
 
-For a blog I recommend using a the smallest cheapest instance possible (a micro-instance with 613 MB of memory) on RHEL.
+For a small blog such as this I recommend using a the smallest cheapest instance possible (a micro-instance with 613 MB of memory) on RHEL.  
+The cheapest option runs about $6.44 a month over 3 years (Totaling $231.76).
 
-A key pair is required to ssh to the server after it is running.  Rather than let Amazaon create that keypair I
-recommend creating one locally as you will want to use and know the pass phrase.
+A key pair is required to ssh to the server after it is running.  Amazon can create this for you or you can upload one.
 
 ## Security Groups
 
@@ -48,20 +49,30 @@ For the security groups open the following ports
  - 443 for HTTPS
  - 7000 for github
 
-Remember to modify the instance ip tables (or for the risk-takers disable it :-)
+Remember to modify the instance iptables configuration (or for the risk-takers disable it :-).  With Amazon's security groups iptables are not a 
+strict security requirement, but some sort of port forwarding will be needed later.
 
 ## Installation
 
 With an ec2 instance a user is starting from scratch.  A complete install of [nodejs] is required.  The following
  command will get that done
 
-    wget
+    wget http:////nodejs.org/dist/node-latest.tar.gz
+    tar -zxvf node-latest.tar.gz
+    rm -rf node-latest.tar.gz
+
+Switch to the unzipped node folder and build the software.
+
+    cd node-vX.X.X
+    ./configure --prefix=/usr
+    make
+    make install
 
 After installing nodejs and npm the following modules need to be installed
 
-	npm install wheat
-	npm install stack
-	npm install creationix
+    npm install wheat
+    npm install stack
+    npm install creationix
 
 In order to run node as a child process run the following
 
@@ -83,15 +94,12 @@ Follow the following steps ([Great Gist](https://gist.github.com/kentbrew/776580
 
 **Output:**
 >Chain INPUT (policy ACCEPT)
->
 >target prot opt source destination
 >
 >Chain FORWARD (policy ACCEPT)
->
 >target prot opt source destination
 >
 >Chain OUTPUT (policy ACCEPT)
->
 >target prot opt source destination
 
 No rules present so now let's add a rule forwarding from external port 80 to internal port 8000.
@@ -104,13 +112,12 @@ Listed again there is a a new PREROUTING chain:
 
 **Output:**
 >Chain PREROUTING (policy ACCEPT)
->
 >target prot opt source destination
 >
 >REDIRECT tcp -- anywhere anywhere tcp dpt:http redir ports 8000
 
 Check the node server to confirm it is listening on port 8000, but is writing responses to port 80.
-
+    
 ## Start Server
 
 The one gap in the overall solution for wheat is the approach for a production release is to use a bare repository.  The
@@ -164,4 +171,9 @@ From there it grabs the PID and kills them, otherwise nothing is done and the us
       printf "...no processes found to kill\n"
     fi
 
+[git]: http://git-scm.com
+[haml]: http://haml.info
+[node.js]: http://nodejs.org/
+[Octopress]: http://octopress.org
+[Wheat]: http://github.com/creationix/wheat
 
