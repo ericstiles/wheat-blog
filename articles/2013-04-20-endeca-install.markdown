@@ -4,19 +4,29 @@ Date: Aug 1 2013 17:30:00 GMT-0500 (CST)
 Categories: endeca,oracle,atg,crs
 Email: stiles.eric@gmail.com
 
-My day job consists at various points of working with Endeca, a search engine recently purchased by Oracle for it's
-eCommerce product suite.
+My day job consists at various points of working with the [Oracle Commerce Stack](http://www.oracle.com/us/products/applications/atg/oracle-commerce-overviewwp-1667913.pdf)
+ - [ATG]()
+ - [Endeca]()
+ - Integrating soon [WebCenter]()(formerly fatwire)
+
+Over time I've played around with various installations of Endeca and ATG, but I've highlighted here an install of
+Endeca implementing the ATG [Commerce Reference App](http://docs.oracle.com/cd/E36434_01/CRS.10-1-2/index.html).
 
 ## Support Matrix
-The Endeca Commerce Suite v3.1.1 supports ATG version 10.1.2
-The Endeca Commerce Suite v3.1.2 supports ATG version 10.2
+
+Below are the two common versions of the Endeca suite and the corresponding ATG versions they work with.
+
+ - The Endeca Commerce Suite v3.1.1 supports ATG version 10.1.2
+ - The Endeca Commerce Suite v3.1.2 supports ATG version 10.2
 
 I have previously tried to use v3.1.2 with ATG v10.1.2 and ran into issues.  After consulting with Oracle Production
 Support it was pretty clear that the support versions are very specific.
 
-## Installation
-Step 1: MDEX Install
-Step 2: Platform Services
+## Installation Steps
+1.  Step 1: MDEX Install
+2.  Step 2: Platform Services
+
+
 Step 3: CAS
 Step 4: Document Conversion
 Step 5: Post Install
