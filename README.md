@@ -11,5 +11,9 @@ Check out the [github project](https://github.com/creationix/wheat) for guides a
 
 The server.js needs to exist within the bare repository in order to pull the articles from the bare repository.  At this point I haven't thought through a work-around for this issue. 
 
+## IDE
+
+WebStorm removes trailing whitespaces.  This is an issue when needing to add <br/>.
+
 ## License
 (The MIT License)
