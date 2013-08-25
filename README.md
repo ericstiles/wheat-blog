@@ -13,7 +13,7 @@ The server.js needs to exist within the bare repository in order to pull the art
 
 ## IDE
 
-WebStorm removes trailing whitespaces.  This is an issue when needing to add <br/>.  There doesn't seem to be a work-around.
+WebStorm removes trailing whitespaces.  This is an issue when needing to add &lt;br/&gt;.  There doesn't seem to be a work-around.
 
 ## License
 (The MIT License)
