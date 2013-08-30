@@ -7,6 +7,10 @@
 *.o
 *.so
 
+# Wheat project code *
+######################
+wheat
+
 # Build Output #
 ################
 results
