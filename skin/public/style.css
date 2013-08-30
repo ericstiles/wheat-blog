@@ -55,6 +55,7 @@ dl a:hover {
   position: relative;
   z-index: 50;
   max-width: 200px;
+  margin-top: 12px;
 }
 #footer {
   clear: both;
@@ -199,7 +200,7 @@ dl a:hover {
 
 .article h1 {
   padding: 0px;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 32px;
 }
 .article h2 {
@@ -338,6 +339,7 @@ dl a:hover {
 #sidebar .bubble {
   margin-bottom: 20px;
 }
+
 #sidebar h3,
 #sidebar h4 {
   padding: 10px 0px;
@@ -414,6 +416,11 @@ dl a:hover {
 #sidebar .twitter-share-button {
   margin-bottom: 10px;
 }
+
+#wordcloud a{
+    margin: 2px;
+}
+
 #main.index h3 {
   font-size: 32px;
   line-height: 32px;
