@@ -1,0 +1,191 @@
+Title: Efficiently Staging Changes In git
+Author: Eric Stiles
+Date: May 20 2013 17:30:00 GMT-0500 (CST)
+Categories: git
+Email: stiles.eric@gmail.com
+
+Here are a couple of useful attributes for **git add** that should give you back some time (seconds add up) and make
+managing changes a little easier.
+
+# git add
+
+    git add .
+
+Stages all changes to existing files and adds new files.  Deleted files are not touched with this command.  
+
+    git rm <file name>
+
+Stages deleted files, but is cumbersome since you need to know the exact filename if the file has been deleted outside 
+of git.  There is another solution:
+
+    git add -u .
+
+From the documentation
+
+>Only match <pathspec> against already tracked files in the index rather than the working tree.
+>That means that it will never stage new files, but that it will stage modified new contents of
+>tracked files and that it will remove files from the index if the corresponding files in the
+>working tree have been removed.
+
+## So what exactly is going on?
+
+In a git repository start with setting up some sample files in a repository.  Below two files are 
+created and the code demonstrates that "**-u**" doesn't stage the untracked files.
+
+    $echo change > change.file
+    $echo delete > delete.file
+    $git add -u .
+    $git status
+    # On branch master
+    #
+    # Initial commit
+    #
+    # Untracked files:
+    #   (use "git add <file>..." to include in what will be committed)
+    #
+    #	change.file
+    #	delete.file
+    nothing added to commit but untracked files present (use "git add" to track)
+    $git add .
+    $git status
+    # On branch master
+    #
+    # Initial commit
+    #
+    # Changes to be committed:
+    #   (use "git rm --cached <file>..." to unstage)
+    #
+    #	new file:   change.file
+    #	new file:   delete.file
+    #
+    $git commit -m "add ."
+    [master (root-commit) e5a0470] add .
+     2 files changed, 2 insertions(+)
+     create mode 100644 change.file
+     create mode 100644 delete.file
+
+"**git add -u \.**" didn't stage any changes.  
+"**git add \.**" staged the addition of new files.
+
+Below one file is deleted and another is modified 
+
+    (master) $echo change me > change.file
+    (master) $rm delete.file
+    (master) $git status
+    # On branch master
+    # Changes not staged for commit:
+    #   (use "git add/rm <file>..." to update what will be committed)
+    #   (use "git checkout -- <file>..." to discard changes in working directory)
+    #
+    #	modified:   change.file
+    #	deleted:    delete.file
+    #
+    no changes added to commit (use "git add" and/or "git commit -a")
+    (master) $git add .
+    (master) $git status
+    # On branch master
+    # Changes to be committed:
+    #   (use "git reset HEAD <file>..." to unstage)
+    #
+    #	modified:   change.file
+    #
+    # Changes not staged for commit:
+    #   (use "git add/rm <file>..." to update what will be committed)
+    #   (use "git checkout -- <file>..." to discard changes in working directory)
+    #
+    #	deleted:    delete.file
+    #
+
+"**git add .**" stages changes to the tracked file but did not include the file that was deleted.
+
+Next reset the changes
+
+    (master) $git reset
+    Unstaged changes after reset:
+    M	change.file
+    D	delete.file
+    (master) $git status
+    # On branch master
+    # Changes not staged for commit:
+    #   (use "git add/rm <file>..." to update what will be committed)
+    #   (use "git checkout -- <file>..." to discard changes in working directory)
+    #
+    #	modified:   change.file
+    #	deleted:    delete.file
+    #
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+Now stage the changes with the **-u** attribute
+
+    (master) $git add -u
+    (master) $git status
+    # On branch master
+    # Changes to be committed:
+    #   (use "git reset HEAD <file>..." to unstage)
+    #
+    #	modified:   change.file
+    #	deleted:    delete.file
+    #
+
+Adding all changes can take two commands: **git add .; git add -u**
+
+## Reduce keyboards steps: git add -A
+
+git has another attribute **-A** that stages changes for modified files, untracked files and deleted 
+files.  It is equivalent to "git add .; git add -u".
+
+"git add -A" is the shortcut for doing both.
+
+Again, reset the previously staged changes and add new file
+
+    (master) $git reset
+    Unstaged changes after reset:
+    M	change.file
+    D	delete.file
+    (master) $git status
+    # On branch master
+    # Changes not staged for commit:
+    #   (use "git add/rm <file>..." to update what will be committed)
+    #   (use "git checkout -- <file>..." to discard changes in working directory)
+    #
+    #	modified:   change.file
+    #	deleted:    delete.file
+    #
+    no changes added to commit (use "git add" and/or "git commit -a")
+    (master) $echo new file > new.file
+    (master) $git status
+    # On branch master
+    # Changes not staged for commit:
+    #   (use "git add/rm <file>..." to update what will be committed)
+    #   (use "git checkout -- <file>..." to discard changes in working directory)
+    #
+    #	modified:   change.file
+    #	deleted:    delete.file
+    #
+    # Untracked files:
+    #   (use "git add <file>..." to include in what will be committed)
+    #
+    #	new.file
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+Run add command with the -A attribute
+
+    (master) $git add -A
+    (master) $git status
+    # On branch master
+    # Changes to be committed:
+    #   (use "git reset HEAD <file>..." to unstage)
+    #
+    #	modified:   change.file
+    #	deleted:    delete.file
+    #	new file:   new.file
+    #
+
+And there it is the quickest and easiest way to stage all types of file changes
+
+# To Recap:
+
+    git add -A stages All changes: modified, deleted and new
+    git add . stages new and modified changes, not deleted changes
+    git add -u stages modified and deleted changes, not new changes
+
