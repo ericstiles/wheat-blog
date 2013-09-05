@@ -14,19 +14,20 @@
 
   .bubble
     %h4
+      Cloud
+    #wordcloud
+      :each cl in cloud
+        %a{href: "/category/" + cl.tag, rel:cl.weight}&= cl.tag + "(" + cl.weight + ")"
+        &#32;
+
+  .bubble
+    %h4
       Articles
     %ul
       :each article in articles.slice(0,20)
         %li
           %a{href: "/" + article.name}&=article.title
 
-  .bubble
-    %h4
-      Categories
-    %ul
-      :each category in categories.slice(0,20)
-        %li
-          %a{href: "/category/" + category}&=category
   .aside
     = markdownEncode(description)
 
