@@ -3,7 +3,10 @@
 module.exports = {
     author : {
         'name':'Eric Stiles',
-        'file':'Eric Stiles.markdown',
-        'url': '/author/Eric Stiles'
+        'file':'eric-stiles.markdown',
+        'url': 'eric'
+    },
+    header : {
+        'Cache-Control' : 1
     }
 };
