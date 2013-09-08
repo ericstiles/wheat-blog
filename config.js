@@ -3,7 +3,7 @@
 module.exports = {
     author : {
         'name':'Eric Stiles',
-        'file':'eric.markdown',
+        'file':'eric-stiles.markdown',
         'url': 'eric'
     },
     header : {
