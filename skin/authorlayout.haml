@@ -1,0 +1,65 @@
+!!! 5
+%html(lang="en")
+  %head
+    %meta(charset="utf-8")
+    %title #{(title ? title + " - " : "")}NodeJS By Eric Stiles
+    %meta(name="description" content="Learn the zen of coding in NodeJS.")
+    %meta(name="viewport" content="width=device-width") 
+    %meta(name="og:type" content="#{(title ? 'article' : 'blog')}")
+    %meta(name="og:title" content="#{(title ? title + ' - ' : '')}NodeJS By Eric Stiles")
+    %meta(name="og:image" content="#{(title ? title + ' - ' : '')}IMAGE GOES HERE")
+    %meta(name="og:site_name" content="NodeJS By Eric Stiles")
+    %meta(name="og:url" content="#{url}")
+    %link(href="/style.css" rel="stylesheet")
+    %link(href="/jqcloud.css" rel="stylesheet")
+    %link(href="/print.css" rel="stylesheet" media="print")
+    %link(rel="alternate" type="application/rss+xml" title="RSS 2.0" href="/feed.xml")
+    %link(href="/favicon.ico" rel="icon" type="image/x-icon")
+    :script
+      document.write(unescape("%3Cscript src='http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+      document.write(unescape("%3Cscript src='/jquery.tagcloud.js' type='text/javascript'%3E%3C/script%3E"));
+
+    :script
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-43095806-1']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    :script
+      $.fn.tagcloud.defaults = {
+        size: {start: 10, end: 14, unit: 'pt'},
+        color: {start: '#686868', end: '#000000'}
+      };
+ 
+      $(function () {
+        $('#wordcloud a').tagcloud();
+      });
+
+  %body
+    #container
+      #header
+        #hdrcntr
+          %a{href: "http://ericstil.es"}
+            %h1.tagline
+              ${eric stiles}
+          #menu
+            <a href="https://github.com/ericstiles" target='blank'>github</a>
+            |
+            <a href="http://www.linkedin.com/in/ericstiles" target='blank'>linkedin</a>
+            |
+            <a href="https://twitter.com/ets04uga" target='blank'>twitter</a>
+            |
+            %a{href: self}
+              _self
+      = content
+      
+      #footer
+        %p
+          %a{href: "http://github.com/creationix/wheat"}
+            Wheat running on <a href="http://nodejs.org">node</a> #{process.version} <- security risk? ;-)
+        %p &copy; 2013 Eric Stil.es
+
