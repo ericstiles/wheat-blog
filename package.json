@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:ddewaele/node-wheat-blog-template.git"
+    "url": "git@github.com:ericstiles/node-wheat-blog.git"
   },
   "engines": {
     "node": ">=0.4.0"
@@ -21,7 +21,7 @@
     "connect": ">=2.4.3",
     "creationix": "~0.3.1",
     "stack": "~0.1.0",
-    "wheat": "~0.2.6"
+    "wheat": "git://github.com/ericstiles/wheat.git"
   },
   "keywords": [
     "git",

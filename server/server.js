@@ -7,12 +7,12 @@ var Stack = require('stack'),
 
 Http.createServer(Stack(
   Logger.log(),
-  require('../wheat')(__dirname +"/..", Config)
+  require('wheat')(__dirname +"/..", Config)
 )).listen(8000);
 
 Http.createServer(Stack(
   Logger.log(),
-  require('../wheat')(__dirname +"/..", Config)
+  require('wheat')(__dirname +"/..", Config)
 )).listen(8443);
 
 
