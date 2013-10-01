@@ -6,7 +6,7 @@ gith({
 }).on( 'all', function( payload ) {
     console.log( 'Post-receive form Github');
     //console.log("Payload = " + JSON.stringify(payload));
-    var gitRepoPath = "/home/node/wheat-blog.git";
+    var gitRepoPath = "/home/node/blog/wheat-blog.git";
     var gitCommand = "git --git-dir " + gitRepoPath + " fetch origin master:master";
     var gitLogUpdate = "git --git-dir " + gitRepoPath + " log -1 --pretty=oneline";
     var sys = require('sys')
