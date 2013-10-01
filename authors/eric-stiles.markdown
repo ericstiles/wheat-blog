@@ -6,7 +6,14 @@ Skype: e.stiles
 Location: San Antonio, Texas
 Homepage: http://ericstil.es
 
-So I started young... Very young.  My parents found that [Legos] and a computer were cheaper than a babysitter:-)
+
+# Career Summary
+
+I am a self motivated individual with a proven track record in technical and thought leadership of large scale enterprise
+projects with interdisciplinary teams using a balanced combination of technical leadership, project management skills,
+and change management. Leads via first understanding business requirements and drivers and Quality-of-service
+requirements, then working with IS leadership and teams establish a solution and an approach to guarantee success of
+initiatives.  Practical experience bridging the gap between development and operations.
 
 # From There To Here
 
@@ -48,4 +55,4 @@ spending some time with [4Clojure]() and [Clojure Docs]() trying to pick up the 
 
 ## NodeJS
 
-As you can see with this site I'm working through my issues NodeJs.  More to come...
+As you can see with this site I'm working through my issues wuth NodeJs.  More to come...
