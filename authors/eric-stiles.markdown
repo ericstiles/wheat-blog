@@ -15,6 +15,10 @@ and change management. Leads via first understanding business requirements and d
 requirements, then working with IS leadership and teams establish a solution and an approach to guarantee success of
 initiatives.  Practical experience bridging the gap between development and operations.
 
+# Experience
+## Technical Lead – eCommerce, H. E. BUTT GROCERY, INC. SAN ANTONIO, TX	6/08 – Present
+
+
 # From There To Here
 
  - [Timex Sinclair](http://en.wikipedia.org/wiki/Timex_Sinclair_1000)
