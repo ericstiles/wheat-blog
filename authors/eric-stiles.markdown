@@ -6,7 +6,6 @@ Skype: e.stiles
 Location: San Antonio, Texas
 Homepage: http://ericstil.es
 
-
 # Career Summary
 
 I am a self motivated individual with a proven track record in technical and thought leadership of large scale enterprise
@@ -16,19 +15,44 @@ requirements, then working with IS leadership and teams establish a solution and
 initiatives.  Practical experience bridging the gap between development and operations.
 
 # Experience
-## Technical Lead – eCommerce, H. E. BUTT GROCERY, INC. SAN ANTONIO, TX	6/08 – Present
+## eCommerce
+Leader in first major release of eCommerce effort focused on in-store pickup across ~300 brick and mortar stores.
+ - Directed implementation including technical design, project management and change management/release coordinator.
 
+# Security
+ - PCI
 
-# Historical Interests
+#Continuous Integration
+Stood up Continuous Integration Implementation Strategy and Environment
+ - Moved team from CVS to DVCS (git) creating a version based branching strategy to meet team requirements and capabilities
+ - TDD approach improving test coverage from 5% to 75% on new development
+ - Use of multiple code quality tools to support development through a shortened feedback loop and present out to Leadership
+ - Introduced automated Smoke and Regression tests using Watir framework (ruby) QA team for integration and regression tests,  Regression testing went from a manual 4 day process to 1 hour
+ - Introduced Database Version Control through the Liquibase library successfully completing over 100 database changes from development to certification through to production without a single issue
+ - Added Integration testing and UI testing reducing QA and developer account while also reducing regression te
 
- - [Timex Sinclair](http://en.wikipedia.org/wiki/Timex_Sinclair_1000)
- - [TRS-80](http://http://en.wikipedia.org/wiki/TRS-80)
- - [Apple IIe](http://en.wikipedia.org/wiki/Apple_IIe)
- - [Basic](http://en.wikipedia.org/wiki/BASIC)
- - [Solaris](http://en.wikipedia.org/wiki/Solaris_%28operating_system%29)
- - [Fortran](http://en.wikipedia.org/wiki/Fortran)
- - [Win 3.1/95/NT/XP](http://en.wikipedia.org/wiki/Windows_3.1x)
- - [VB Script](http://en.wikipedia.org/wiki/VBScript)
+# Infrastructure
+
+## Scrum
+Support scrum implementation
+ - Implemented Jira and Confluence improving communication for virtual teams
+ - Added poker planning sessions empowering developers to take personal accountability in the planning sessions
+sting from 5 days to 1 hour
+
+# Release Management
+ - Used Blue – Green Deployment philosophy to better implement customer facing application and order management solution
+ with minimal downtime and reduced defect counts in production while at the same time maximizing Business review of enterprise solution
+
+# Interests
+## Methodology
+
+ - Lean
+ - Scrum
+ - Continuous Integration
+ - Continuous Development
+
+## Programming Languages
+
  - [*nix](http://en.wikipedia.org/wiki/Linux)
  - [Java](http://en.wikipedia.org/wiki/Java_%28programming_language%29)
  - [Javascript](http://en.wikipedia.org/wiki/JavaScript)
