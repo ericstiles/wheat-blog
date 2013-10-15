@@ -74,11 +74,10 @@ Leader in first major release of eCommerce effort focused on in-store pickup acr
  - [Gradle](http://en.wikipedia.org/wiki/Gradle)
  - [Clojure](http://en.wikipedia.org/wiki/Clojure)
 
- At our firm the developers have a book club where currently we've started reading [The Joy of Clojure]().  I've been
- spending some time with [4Clojure]() and [Clojure Docs]() trying to pick up the finer points of
+At our firm the developers have a book club where currently we've started reading [The Joy of Clojure](http://http://joyofclojure.com/).  I've been
+ spending some time with [4Clojure](http://http://www.4clojure.com/) and [Clojure Docs]() trying to pick up the finer points of
  [Homoiconicity](http://en.wikipedia.org/wiki/Homoiconicity)(treating code as data).
 
  - [NodeJS](http://en.wikipedia.org/wiki/Nodejs)
 
- As you can see with this site I'm working through my issues wuth NodeJs.  More to come...
- 
+As you can see with this site I'm working through my issues wuth NodeJs.  More to come...
