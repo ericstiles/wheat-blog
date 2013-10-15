@@ -1,6 +1,9 @@
 //config.route = {[]};
 
 module.exports = {
+    host : {
+        'url':"http://ericstil.es"
+    },
     author : {
         'name':'Eric Stiles',
         'file':'eric-stiles.markdown',

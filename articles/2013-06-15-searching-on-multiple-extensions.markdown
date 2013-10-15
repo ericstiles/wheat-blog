@@ -1,5 +1,4 @@
 Title: Searching For Files On Multiple Extensions
-Author: Eric Stiles
 Date: June 10 2013 17:30:00 GMT-0500 (CST)
 Categories: bash, regex
 Email: stiles.eric@gmail.com
