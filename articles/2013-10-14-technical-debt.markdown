@@ -1,6 +1,6 @@
 Title: Technical Debt: Useful Jargon?
 Date: October 14 2013 17:30:00 GMT-0500 (CST)
-Categories: technical debt
+Categories: technical-debt
 Email: stiles.eric@gmail.com
 
 I use the term technical debt as part of my casual conversation and as a lead in to detailed explanation of an issue that needs to be addressed for management or as a light talking point where the definition of the talking point is understood.
