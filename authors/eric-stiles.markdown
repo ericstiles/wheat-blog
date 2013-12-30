@@ -6,54 +6,41 @@ Skype: e.stiles
 Location: San Antonio, Texas
 Homepage: http://ericstil.es
 
-# Career Summary
-I am a self motivated individual with a proven track record in technical and thought leadership of large scale enterprise
-projects with interdisciplinary teams using a balanced combination of technical leadership, project management skills,
-and change management. Leads via first understanding business requirements and drivers and Quality-of-service
-requirements, then working with IS leadership and teams establish a solution and an approach to guarantee success of
-initiatives.  Practical experience bridging the gap between development and operations.
+# Summary
+Highly motivated IT Technologist with a proven track record of leading technical teams in delivering large-scale enterprise projects. Collaborates
+with business leaders to thoroughly understand their objectives and then defines high quality technical solutions to enable their goals. Institutes
+technical development efficiencies by studying IT industry best practices and encouraging technical teams to experiment and adapt those practices.
 
 # Experience
-## eCommerce
-Leader in first major release of eCommerce effort focused on in-store pickup across ~300 brick and mortar stores.
 
- - Multiple integration implementations creating End to End solution across multiple verticals
- - Application design on Oracle ATG and Endeca Commerce Framework
- - Release Coordinator
- - Support project management scheduling
+### Lead technical development of eCommerce program.  Developing capabilities to support $250M in annual eCommerce sales across 100K skus with capacity for 23M unique monthly visitors.
 
-### Experience with online applications
+ - Collaborate with Enterprise Architects in designing enterprise integrations and order workflow meeting business requirements, security non-functional requirements, performance non-functional requirements and monitoring solutions
+ - Plan and successfully manage release coordination activities across multiple teams reducing risk for enterprise releases
+ - Oversee Security PCI audits for the ecommerce team developing processes, support documentation and code audits
+ - Coordinate with operations in planning for infrastructure growth as business requirements are delivered
+ - Resolve performance issues with infrastructure and application found during load testing
+ - Lead crisis management teams using strong analytical skills resolving mission critical application issues
+ - Monitor project status and communicate issues, risks and mitigation strategies to team members, stakeholders and leadership; lead mitigation efforts to quickly minimize impact to program deliverables.  Work with business team to identify key enhancements and address defects for patch releases
 
- - Handling ~5 million unique monthly visitors
- - Online sales of ~$3 million annually
+### Supervise 25+ co-located and remote cross-functional development and production support team members
 
-## Experience with Crisis Management
+ - Coach and mentor developers and production support team members
+ - Identify resource skill sets to most effectively utilize team members in meeting project goals
+ - Manage peer reviews and code audits to maintain high quality standards and to minimize technical risks 
+ - Support eCommerce Director planning team capacity and monthly budget
 
- - First hand experience in decision-making to address critical response efforts supporting a mission critical applications
- - Trained production support staff in issues resolution practices and escalation processes
+### Spearhead process and technology implementation supporting a lean development methodology
 
-#Continuous Integration
-
- - Stood up Continuous Integration Implementation Strategy and Environment
- - Moved team from CVS to DVCS (git) creating a version based branching strategy to meet team requirements and capabilities
- - TDD approach improving test coverage from 5% to 75% on new development
- - Use of multiple code quality tools to support development through a shortened feedback loop and present out to Leadership
- - Introduced automated Smoke and Regression tests using Watir framework (ruby) QA team for integration and regression tests,  Regression testing went from a manual 4 day process to 1 hour
- - Introduced Database Version Control through the Liquibase library successfully completing over 100 database changes from development to certification through to production without a single issue
-
-# Infrastructure
-
- - Developed dynamic tool suite allowing minimal team to manage ~100 servers supporting development across multiple business verticals including production deployment
-
-## Scrum
-
- - Support 3rd party scrum implementation
- - Implemented Jira and Confluence improving communication for virtual teams
- - Added poker planning sessions empowering developers to take personal accountability in the planning sessions
-
-# Release Management
-
- - Used Blue – Green Deployment philosophy to better implement customer facing application and order management solution with minimal downtime and reduced defect counts in production
+ - Support 3rd party development introducing scrum software developer methodology
+ - Model Continuous Integration workflow with plans to move towards Continuous Deployment.  Infrastructure is ~40 non-production servers and ~32 production servers across multiple environments supporting business verticals
+ - Introduce TDD approach improving test coverage from 5% to 75% on new development
+ - Build into development processes various code quality tools tracking development in shortened feedback loop
+ - Introduce automated regression testing reducing testing cycle from 5 days to hours using Watir framework
+ - Implement database versioning tied to code deployments successfully completing over 100 database changes through to production without manual intervention
+ - Pilot Blue – Green Deployment philosophy to improving deployment processes while reducing better implement major changes to functionality with minimal downtime and reduced defect counts in production
+ - Champion use of Jira and Confluence improving developer communication and documentation
+ - Transform HEB SCM process by implementing git DVCS with HEB moving all SCM to git for all development work
 
 # Interests
 ## Methodologies
@@ -73,11 +60,4 @@ Leader in first major release of eCommerce effort focused on in-store pickup acr
  - [Groovy](http://en.wikipedia.org/wiki/Groovy_%28programming_language%29)
  - [Gradle](http://en.wikipedia.org/wiki/Gradle)
  - [Clojure](http://en.wikipedia.org/wiki/Clojure)
-
-At our firm the developers have a book club where currently we've started reading [The Joy of Clojure](http://http://joyofclojure.com).  I've been
- spending some time with [4Clojure](http://http://www.4clojure.com/) and [Clojure Docs](http://clojuredocs.org) trying to pick up the finer points of
- [Homoiconicity](http://en.wikipedia.org/wiki/Homoiconicity)(treating code as data).
-
  - [NodeJS](http://en.wikipedia.org/wiki/Nodejs)
-
-As you can see with this site I'm working through my issues wuth NodeJs.  More to come...
