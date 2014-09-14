@@ -1,4 +1,4 @@
-Wheat Blog 
+DEPRECATED: Wheat Blog 
 ==========
 
 [Wheat-blog](http://ericstil.es) running on an ec2 server.
